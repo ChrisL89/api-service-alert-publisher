@@ -1,0 +1,67 @@
+{
+  "name": "api-service-alert-publisher",
+  "version": "0.0.0",
+  "description": "Taking message from redis queue and publish to down stream(e.g. KAFKA, Plunk)",
+  "author": {
+    "name": "luoc",
+    "email": "chris.luo@tabcorp.com.au"
+  },
+  "files": [
+    "src"
+  ],
+  "main": "src/index.js",
+  "keywords": [
+    "publisher",
+    "alert"
+  ],
+  "devDependencies": {
+    "@tabdigital/dev-seed": "^1.0.3",
+    "@tabdigital/release-version": "^1.0.3",
+    "chai": "^4.1.2",
+    "commander": "^2.19.0",
+    "eslint": "^5.1.0",
+    "lec": "^1.0.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4"
+  },
+  "engines": {
+    "npm": ">= 10.6.0"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "start:dev": "nodemon src/index.js",
+    "prepare": "lec src/cli.js -c LF",
+    "test": "npm run test:unit",
+    "test:unit": "env NODE_PATH=$NODE_PATH:$PWD mocha 'test/**/*.spec.js'",
+    "test:ci": "sleep 10; npm install --only=dev && npm run lint && npm run test:unit",
+    "build-dev-seed": "dev-seed build",
+    "start-dev-seed": "dev-seed start",
+    "restart-dev-seed": "dev-seed restart",
+    "stop-dev-seed": "dev-seed stop",
+    "tail-dev-seed": "dev-seed tail",
+    "clean-dev-seed": "dev-seed clean",
+    "lint": "eslint --ignore-path .gitignore --ext .js .",
+    "lint-fix": "eslint --ignore-path .gitignore --ext .js . --fix"
+  },
+  "dependencies": {
+    "@tabdigital/api-error": "^0.0.2",
+    "@tabdigital/api-logger": "^3.1.0",
+    "@tabdigital/kafka-client": "^2.0.1",
+    "@tabdigital/api-middleware": "^3.0.0",
+    "@tabdigital/connect-router": "^4.5.0",
+    "async": "^2.6.1",
+    "dotenv": "^6.0.0",
+    "lodash": "^4.17.10",
+    "meow": "^5.0.0",
+    "strummer": "^2.5.0",
+    "restify": "^7.2.1",
+    "restify-errors": "^6.1.1",
+    "rsmq-worker": "^0.5.2",
+    "newrelic": "^4.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.tabcorp.com.au:TabDigital/api-service-alert-publisher.git"
+  },
+  "bin": "src/cli.js"
+}

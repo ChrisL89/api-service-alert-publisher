@@ -1,0 +1,9 @@
+{
+  "@tabdigital/generator-tabdigital-node": {
+    "promptValues": {
+      "authorName": "luoc",
+      "authorEmail": "chris.luo@tabcorp.com.au",
+      "api": false
+    }
+  }
+}
